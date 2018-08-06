@@ -1,6 +1,10 @@
 <template>
   <div class="posts">
     <h1>Posts</h1>
+    <md-button class="md-icon-button">
+        <md-icon>home</md-icon>
+    </md-button>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons">
     <div v-if="posts.length > 0" class="table-wrap">
       <div>
         <router-link v-bind:to="{ name: 'addpost' }" class="">Add Post</router-link>
