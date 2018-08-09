@@ -1,10 +1,7 @@
 <template>
   <div class="posts">
     <h1>Posts</h1>
-    <md-button class="md-icon-button">
-        <md-icon>home</md-icon>
-    </md-button>
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     <div v-if="posts.length > 0" class="table-wrap">
       <div>
         <router-link v-bind:to="{ name: 'addpost' }" class="">Add Post</router-link>
@@ -29,6 +26,44 @@
       There are no posts.. Lets add one now <br /><br />
       <router-link v-bind:to="{ name: 'addpost' }" class="add_post_link">Add Post</router-link>
     </div>
+    <v-card height="200px" flat>
+    <div class="headline text-xs-center pa-5">
+      Active: {{ bottomNav }}
+    </div>
+    <v-bottom-nav
+      :active.sync="bottomNav"
+      :value="true"
+      absolute
+      color="transparent"
+    >
+      <v-btn
+        color="teal"
+        flat
+        value="recent"
+      >
+        <span>Recent</span>
+        <v-icon>history</v-icon>
+      </v-btn>
+
+      <v-btn
+        color="teal"
+        flat
+        value="favorites"
+      >
+        <span>Favorites</span>
+        <v-icon>favorite</v-icon>
+      </v-btn>
+
+      <v-btn
+        color="teal"
+        flat
+        value="nearby"
+      >
+        <span>Nearby</span>
+        <v-icon>place</v-icon>
+      </v-btn>
+    </v-bottom-nav>
+  </v-card>
   </div>
 </template>
 
@@ -38,7 +73,8 @@ export default {
   name: 'posts',
   data () {
     return {
-      posts: []
+      posts: [],
+      bottomNav: 'recent'
     }
   },
   mounted () {
